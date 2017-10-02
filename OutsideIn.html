@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OutsideIn</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Kartik Kapur</a>
+        <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="61A.html">61A</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="61B.html">61B</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutme.html">About Me</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Projects
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="bearmax.html">Bearmax</a>
+                        <a class="dropdown-item" href="OutsideIn.html">OutsideIn</a>
+                        <a class="dropdown-item" href="Asf.html">Assignment Solutions Finder</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="nav-link"
+                       href="https://docs.google.com/document/d/1jPDl2bQjQZsMb-9xdZNi0zb8NuHghel42CFo_bPAPH8/edit?usp=sharing">Resumé</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">OutsideIn
+        <small>HackDavis 2017</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="projects.html">Projects</a>
+        </li>
+        <li class="breadcrumb-item active">OutsideIn</li>
+    </ol>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+        <div class="col-lg-3 mb-4">
+            <div class="list-group">
+                <iframe src="https://docs.google.com/presentation/d/1JT15Px2Myl6hlEvwtUuy99tqTU7Tyo9_AArdqZ0zbTI/embed?start=true&loop=true&delayms=3000"
+                        frameborder="0" width="270" height="200" allowfullscreen="true"
+                        mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                <h3>Demo Steps</h3>
+                <li>The User inputs an entry of their emotions (the one shown is an exerpt of
+                    Anne Frank's diary)
+                </li>
+                <li>After submitting, the user gets a graph that shows the trend of their emotions
+                    (all 6 of them) and the color of the background changes depending on what the prevelant
+                    mood was for their previous entry
+                </li>
+                <li>Finally the user sees a word cloud made of their most frequently said words</li>
+                </a>
+                <a href="https://github.com/KartikKapur/outsidein" class="btn btn-primary">Github Repo</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <p id="outside">
+                <a href="#" class="img-responsive" height = 700 width = 300><img src="images/outsidein.jpg" alt=""/></a>
+            <h3>OutsideIn</h3>
+            <p>OutsideIn is a "smart diary" that analyzes the emotions found in entries and
+                graphs the emotional trend of the user. This product is geared towards those who
+                suffer from mental health issues and was created during Hack Davis 2017.</p>
+            <h4>How Does OutsideIn work?</h4>
+            <p>
+                The base of OutsideIn is the Watson Tone analyzer. My team created a file that
+                would use the the Tone Analyzer and extracted how likely it was that the inputted
+                entry was one of the given emotions (anger, disgust, sadness, fear, joy) and how
+                positive/negative it was (on a scale of -1 to 1). We would then created a method
+                in this file that found the maximum emotion (which one was the most likely) and
+                that would be the emotion that was considered "the correct one" for the entry</p>
+            <p>
+                We needed to store each entry, and to do so, we used SQL. The data was gathered,
+                and eventually, it was put into a graph (the templates were from MetricGraphics.js).
+                With each entry, the graph would grow larger, and the background color of the browser
+                would correspond to the color of the most likely emotion of the previous entry. Additionally,
+                a word cloud was formed that contained the most frequently said words in the entry.
+            </p>
+            <h3>What I learned during this project</h3>
+            <p>
+            <ul>
+                In this project, I learned how to apply SQL as well as a few new
+                skills including :
+                <li>IBM's Watson Tone Analyzer</li>
+                <li>MetricGraphics</li>
+                <li>Basics of HTML and Bootstrap</li>
+            </ul>
+            We initially attempted to use Django as well to create a database of all the users;
+            however, it was too time consuming to do so, and the 24 hour time limit we were provided
+            simply did not give our team enough time to udnerstand how to use Django properly.</br>
+            This was overall a great experience, and it was great to see how a product like the one I
+            created could be utilized so that trends in those who are mentally unstable could be analyzed
+            without invading their privacy.
+            </p>
+        </div>
+
+
+        <!-- /.row -->
+
+        <!-- Related Projects Row -->
+        <h3 class="my-4">Other Projects</h3>
+
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="Bearmax.html">
+                    <img class="img-fluid" src="./images/bearmax.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="OutsideIn.html">
+                    <img class="img-fluid" src="./images/Outsidein.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="asf.html">
+                    <img class="img-fluid" src="./images/54.png" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="datastructuresandalgorithms.html">
+                    <img class="img-fluid" src="./images/dands.png" alt="">
+                </a>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+<!-- Footer -->
+<footer class="panel-footer">
+    <div class="container">
+        <center>
+            <p>
+                <a href="mailto:kartik@kartikkapur.com">
+                    <img src="./images/emailbw.png" width="35" height="35">
+                </a>
+                <a href="https://www.linkedin.com/in/kartikkapur1/">
+                    <img title="LinkedIn" alt="LinkedIn"
+                         src="./images/linkedinbw.png" width="35"
+                         height="35"/>
+                </a>
+                 <a href ="github.com/KartikKapur"><img src="./images/github.png" alt="" height = 35></a>
+                <a href="">
+                    <img src="./images/quorabw.png" height="35">
+                </a>
+            </p>
+        </center>
+        <p>
+        <center>Copyright &copy; Kartik Kapur</center>
+        </p>
+    </div>
+    <!-- /.container -->
+</footer class="panel-footer">
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+/*!
+ * Start Bootstrap - Modern Business (http://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+.navbar a {
+    color: white !important;
+}
+body {
+    padding-top: 54px;
+}
+
+.navbar .dropdown-menu{
+     background-color: #3086EC;
+     color: blue;
+}
+
+
+.navbar{
+    background-color: #3086EC;
+    color: white;
+    border-color: white;
+    border-radius:0;
+}
+
+.dropdown .nav-link {color:#3086EC; text-decoration: none;}
+.dropdown .dropdown-menu a{color: #3086EC; text-decoration: none;}
+.dropdown .btn:hover {background: #3086EC; color:#0000;}
+.dropdown .btn:active {background: #3086EC; color:#0000;}
+.dropdown .btn:focus {background: #3086EC; color:#0000;}
+.container .dropdown .dropdown-menu a:hover
+{
+  color: #fff;
+  background-color: #0a59d8;
+  border-color: #fff;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: rgb(250,250,250);
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+
+a.title:link, a.title:visited
+{color: black;}
+a.title:hover
+{color: black;}
+
+
+.carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+btn.primary{
+  background:#3086EC;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.panel-footer{
+  height:80px;
+  background-color:#2b6fdb;
+  border-color: #2b6fdb;
+  color: black;
+
+ }
+ .card-header{
+ color: #2b6fdb;
+ }
