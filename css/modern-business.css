@@ -98,3 +98,21 @@ btn.primary{
  .card-header{
  color: #2b6fdb;
  }
+ .col{
+    margin-right: $spacer-x * 1.5 !important;
+
+ }
+.carousel-inner > .item > a > img,  .carousel-inner > .item > img {
+    width: 100%;
+}
+
+.carousel-item img {
+  width:100%
+}
+
+#sticky-sidebar {
+position:fixed;
+max-width: 20%;
+}
+div#dashmain { margin-left:150px; }
+div#dashside {position:fixed; width:150px; height:100%; }
