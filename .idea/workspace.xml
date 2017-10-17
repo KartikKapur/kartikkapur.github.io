@@ -22,14 +22,22 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Megafind.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Megafind.html">
+      <file leaf-file-name="dands.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dands.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1344">
-              <caret line="91" column="53" lean-forward="false" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
-              <folding>
-                <element signature="n#a#0;n#p#0;n#center#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="125" column="58" lean-forward="false" selection-start-line="125" selection-start-column="58" selection-end-line="125" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Asf.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Asf.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="170" column="58" lean-forward="false" selection-start-line="170" selection-start-column="58" selection-end-line="170" selection-end-column="58" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -37,39 +45,21 @@
       <file leaf-file-name="Bearmax.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bearmax.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="192" column="30" lean-forward="false" selection-start-line="192" selection-start-column="30" selection-end-line="192" selection-end-column="30" />
+            <state relative-caret-position="210">
+              <caret line="181" column="58" lean-forward="false" selection-start-line="181" selection-start-column="58" selection-end-line="181" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutsideIn.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OutsideIn.html">
+      <file leaf-file-name="Megafind.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Megafind.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="170" column="30" lean-forward="false" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Asf.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Asf.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="177" column="30" lean-forward="false" selection-start-line="177" selection-start-column="30" selection-end-line="177" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dands.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dands.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-855">
-              <caret line="90" column="98" lean-forward="true" selection-start-line="90" selection-start-column="98" selection-end-line="90" selection-end-column="98" />
-              <folding />
+            <state relative-caret-position="172">
+              <caret line="221" column="50" lean-forward="false" selection-start-line="221" selection-start-column="50" selection-end-line="221" selection-end-column="50" />
+              <folding>
+                <element signature="n#a#0;n#p#0;n#center#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,6 +90,7 @@
       <find>bear</find>
       <find>responsive</find>
       <find>mega</find>
+      <find>outs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,20 +100,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/css/modern-business.css" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/aboutme.html" />
-        <option value="$PROJECT_DIR$/61A.html" />
-        <option value="$PROJECT_DIR$/61B.html" />
-        <option value="$PROJECT_DIR$/Bearmax.html" />
         <option value="$PROJECT_DIR$/OutsideIn.html" />
-        <option value="$PROJECT_DIR$/Asf.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/61B.html" />
+        <option value="$PROJECT_DIR$/61A.html" />
+        <option value="$PROJECT_DIR$/aboutme.html" />
         <option value="$PROJECT_DIR$/dands.html" />
+        <option value="$PROJECT_DIR$/Bearmax.html" />
         <option value="$PROJECT_DIR$/Megafind.html" />
+        <option value="$PROJECT_DIR$/Asf.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="381" />
+    <option name="x" value="360" />
     <option name="y" value="23" />
     <option name="width" value="1080" />
     <option name="height" value="619" />
@@ -303,7 +294,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="381" y="23" width="1080" height="619" extended-state="0" />
+    <frame x="360" y="23" width="1080" height="619" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1957672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -347,7 +338,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -409,7 +399,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
           <caret line="105" column="90" lean-forward="false" selection-start-line="105" selection-start-column="90" selection-end-line="105" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -616,73 +605,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aboutme.html">
+    <entry file="file://$PROJECT_DIR$/OutsideIn.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        <state relative-caret-position="240">
+          <caret line="48" column="17" lean-forward="false" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4117">
-          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="240">
+          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="125" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/61A.html">
+    <entry file="file://$PROJECT_DIR$/aboutme.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+        <state relative-caret-position="420">
+          <caret line="56" column="113" lean-forward="false" selection-start-line="56" selection-start-column="109" selection-end-line="56" selection-end-column="113" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/61B.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        <state relative-caret-position="270">
+          <caret line="56" column="29" lean-forward="false" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="125" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OutsideIn.html">
+    <entry file="file://$PROJECT_DIR$/61A.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="170" column="30" lean-forward="false" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="360">
+          <caret line="55" column="29" lean-forward="false" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="125" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bearmax.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="192" column="30" lean-forward="false" selection-start-line="192" selection-start-column="30" selection-end-line="192" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Asf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="177" column="30" lean-forward="false" selection-start-line="177" selection-start-column="30" selection-end-line="177" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dands.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <caret line="90" column="98" lean-forward="true" selection-start-line="90" selection-start-column="98" selection-end-line="90" selection-end-column="98" />
+        <state relative-caret-position="210">
+          <caret line="181" column="58" lean-forward="false" selection-start-line="181" selection-start-column="58" selection-end-line="181" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Megafind.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1344">
-          <caret line="91" column="53" lean-forward="false" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
+        <state relative-caret-position="172">
+          <caret line="221" column="50" lean-forward="false" selection-start-line="221" selection-start-column="50" selection-end-line="221" selection-end-column="50" />
           <folding>
             <element signature="n#a#0;n#p#0;n#center#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dands.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="125" column="58" lean-forward="false" selection-start-line="125" selection-start-column="58" selection-end-line="125" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Asf.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="170" column="58" lean-forward="false" selection-start-line="170" selection-start-column="58" selection-end-line="170" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
