@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="009134e6-9abd-442c-a9e1-2809fbeae216" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/61A.html" afterPath="$PROJECT_DIR$/61A.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/61B.html" afterPath="$PROJECT_DIR$/61B.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Asf.html" afterPath="$PROJECT_DIR$/Asf.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Bearmax.html" afterPath="$PROJECT_DIR$/Bearmax.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Megafind.html" afterPath="$PROJECT_DIR$/Megafind.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OutsideIn.html" afterPath="$PROJECT_DIR$/OutsideIn.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aboutme.html" afterPath="$PROJECT_DIR$/aboutme.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/modern-business.css" afterPath="$PROJECT_DIR$/css/modern-business.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dands.html" afterPath="$PROJECT_DIR$/dands.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/portfolio-1-col.html" afterPath="$PROJECT_DIR$/templates/portfolio-1-col.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +19,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="61B.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="61B.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/61B.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+            <state relative-caret-position="360">
+              <caret line="168" column="46" lean-forward="false" selection-start-line="168" selection-start-column="46" selection-end-line="168" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -41,8 +32,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="78" column="7" lean-forward="false" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
+            <state relative-caret-position="45">
+              <caret line="76" column="37" lean-forward="false" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -50,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Megafind.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Megafind.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Megafind.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+            <state relative-caret-position="195">
+              <caret line="76" column="13" lean-forward="true" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -73,7 +64,7 @@
       <file leaf-file-name="61A.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/61A.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
+            <state relative-caret-position="2010">
               <caret line="134" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
               <folding />
             </state>
@@ -84,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/templates/about.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="38" lean-forward="true" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+              <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -179,15 +170,15 @@
         <option value="$PROJECT_DIR$/templates/portfolio-1-col.html" />
         <option value="$PROJECT_DIR$/.idea/Projects.html" />
         <option value="$PROJECT_DIR$/Projects.html" />
-        <option value="$PROJECT_DIR$/61B.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/Megafind.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/61B.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="140" />
-    <option name="y" value="243" />
+    <option name="x" value="133" />
+    <option name="y" value="43" />
     <option name="width" value="1080" />
     <option name="height" value="683" />
   </component>
@@ -367,7 +358,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="140" y="243" width="1080" height="683" extended-state="0" />
+    <frame x="133" y="43" width="1080" height="683" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1957672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -651,15 +642,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2505">
           <caret line="167" column="30" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="167" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/Projects.html" />
-    <entry file="file://$PROJECT_DIR$/61B.html">
+    <entry file="file://$PROJECT_DIR$/Megafind.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        <state relative-caret-position="195">
+          <caret line="76" column="13" lean-forward="true" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -668,6 +658,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="128" lean-forward="false" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/61A.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2010">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -704,36 +710,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="38" lean-forward="true" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/61A.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="134" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="78" column="7" lean-forward="false" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
+        <state relative-caret-position="45">
+          <caret line="76" column="37" lean-forward="false" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Megafind.html">
+    <entry file="file://$PROJECT_DIR$/61B.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        <state relative-caret-position="360">
+          <caret line="168" column="46" lean-forward="false" selection-start-line="168" selection-start-column="46" selection-end-line="168" selection-end-column="46" />
           <folding />
         </state>
       </provider>
