@@ -25,6 +25,7 @@ body {
 }
 
 .dropdown .nav-link {color:#3086EC; text-decoration: none;}
+.dropdown .disabled .navlink{color:#3086EC; text-decoration: none;}
 .dropdown .dropdown-menu a{color: #3086EC; text-decoration: none;}
 .dropdown .btn:hover {background: #3086EC; color:#0000;}
 .dropdown .btn:active {background: #3086EC; color:#0000;}

@@ -20,7 +20,6 @@
 </head>
 <div>
 <body>
-<audio src="./batmanintro.mp3" autoplay></audio>
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
@@ -42,10 +41,13 @@
                     <a class="nav-link" href="aboutme.html">About Me</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Projects
-                    </a>
+                  <a class="dropdown-toggle disabled nav-link" href="projects.html" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                     aria-haspopup="true" aria-expanded="false">
+                      Projects</a>
+                      <!-- <a class="dropdown-toggle disabled nav-link" href="projects.html" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                         aria-haspopup="true" aria-expanded="false">
+                          Projects
+                      </a> -->
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                         <a class="dropdown-item" href="Megafind.html">Megafind</a>
                         <a class="dropdown-item" href="Bearmax.html">Bearmax</a>
@@ -66,21 +68,28 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-
             <div class="carousel-item active" style="background-image:url('./images/calhacks40.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Calhacks</h3>
-                    <p>Winning Team</p>
+                    <strong><p>Winning Team</p></strong>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image:url('./images/cousins.jpg')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Cousins</h3>
+                    <strong><p><font color = "">At a Wedding (on a nice jeep)</font></p></strong>
                 </div>
             </div>
             <div class="carousel-item" style="background-image:url('./images/fam.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Family</h3>
-                    <p>Adventure at Yosemite</p>
+                    <strong><p>Adventure at Yosemite</p></strong>
                 </div>
             </div>
 
@@ -164,7 +173,7 @@
                         about taking computer science.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Learn More</a>
+                    <a href="404.html" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -314,6 +323,8 @@
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
+<script>
+</script>
 <script src="vendor/popper/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
