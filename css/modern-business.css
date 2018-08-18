@@ -124,3 +124,21 @@ h1, h2, h3, h4, h5, h6 {
 p, div {
     font-family: 'Droid Sans', sans-serif;
 }
+
+
+.crontainer{
+  width:400px;
+  height:400px;
+  position:relative;
+
+}
+.hover{
+  display:none;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+}
+.crontainer:hover .hover{
+  display:block;
+}
