@@ -4,7 +4,8 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="./images/karty.jpg">
@@ -15,7 +16,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans"
+          rel="stylesheet">
 
 </head>
 
@@ -25,8 +27,10 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="index.html">Kartik Kapur</a>
-        <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        <button class="navbar-toggler navbar-toggler-right custom-toggler"
+                type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,15 +46,20 @@
                     <a class="nav-link" href="aboutme.html">About Me</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" href="#"
+                       id="navbarDropdownPortfolio" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         Projects
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item" href="Megafind.html">Megafind</a>
+                    <div class="dropdown-menu dropdown-menu-right"
+                         aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item"
+                           href="Megafind.html">Megafind</a>
                         <a class="dropdown-item" href="Bearmax.html">Bearmax</a>
-                        <a class="dropdown-item" href="OutsideIn.html">OutsideIn</a>
-                        <a class="dropdown-item" href="Asf.html">Assignment Solutions Finder</a>
+                        <a class="dropdown-item"
+                           href="OutsideIn.html">OutsideIn</a>
+                        <a class="dropdown-item" href="Asf.html">Assignment
+                            Solutions Finder</a>
                     </div>
                 </li>
                 <li>
@@ -86,8 +95,10 @@
         <div class="col-lg-4 mb-4">
             <div class="list-group">
                 <a class="list-group-item">
-                    <p>"Hello my name is BearMax, your personal healthcare companion"</p>
-                    Bearmax is a Facebook chatbot that I helped create during CalHacks 3.0. Bearmax diagnoses users that
+                    <p>"Hello my name is BearMax, your personal healthcare
+                        companion"</p>
+                    Bearmax is a Facebook chatbot that I helped create during
+                    CalHacks 3.0. Bearmax diagnoses users that
                     have minor ailments, essentially making it a smart WebMD.
                 </a>
                 <a class="list-group-item">Awards won:
@@ -99,68 +110,85 @@
                 </a>
                 <a class="list-group-item">
                     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRrnnw_b0kQFtU6PYOVrnI4vV8CJgv_bSmd4oV8HioP-yUzIhURH0vQqQomO8VKXr7KeDPq-d9KPeRR/embed?start=false&loop=false&delayms=3000"
-                            frameborder="0" width= '100%' height="385" allowfullscreen="true" mozallowfullscreen="true"
-                            webkitallowfullscreen="true" slidecontroller = "false" webkitallowfullscreen="true"></iframe>
+                            frameborder="0" width='100%' height="385"
+                            allowfullscreen="true" mozallowfullscreen="true"
+                            webkitallowfullscreen="true" slidecontroller="false"
+                            webkitallowfullscreen="true"></iframe>
                     <h3>Demo Steps</h3>
-                    <li>The user is first asked their gender (They respond with buttons on the bottom)</li>
-                    <li>User is asked the year they were born in and they provide the user provides the year
+                    <li>The user is first asked their gender (They respond with
+                        buttons on the bottom)
+                    </li>
+                    <li>User is asked the year they were born in and they
+                        provide the user provides the year
                     </li>
                     <li>User feeds in a symptom</li>
                     <li>Bearmax confirms the symptoms</li>
-                    <li>Bearmax asks if it has other related symptoms (yes or no buttons on the bottom)</li>
-                    <li>Finally diagnoses with the percentage that you have the ailment, and then provides
+                    <li>Bearmax asks if it has other related symptoms (yes or no
+                        buttons on the bottom)
+                    </li>
+                    <li>Finally diagnoses with the percentage that you have the
+                        ailment, and then provides
                         advice
                     </li>
                 </a>
-                <a href="https://github.com/KartikKapur/bearmax" class="btn btn-primary">Github Repo</a>
+                <a href="https://github.com/KartikKapur/bearmax"
+                   class="btn btn-primary">Github Repo</a>
             </div>
         </div>
         <div class="col-md-8 ">
             <img class="img-fluid" src="./images/bearmax.jpg" alt="">
             <h4>How does Bearmax work?</h4>
-                       <p>
-                In order to get Bearmax to work, we had to first had to create a Facebook app on
+            <p>
+                In order to get Bearmax to work, we had to first had to create a
+                Facebook app on
                 the messenger platform. For our webhook, we had to
-                create a heroku webserver and then use Flask as our web framework. Following this we created
+                create a heroku webserver and then use Flask as our web
+                framework. Following this we created
                 a Python file for the Watson
-                Natural Language Processor to work. In order to keep track of the users,
-                we used MongoDB- MongoDB allowed us to keep track of how many times users
-                had messaged Bearmax, and also allowed us to keep track of the symptoms
-                that had already been inputted. Our final outside source was APIMedic, an API
-                service that has a list of many ailments and symptoms that are closely related
+                Natural Language Processor to work. In order to keep track of
+                the users,
+                we used MongoDB- MongoDB allowed us to keep track of how many
+                times users
+                had messaged Bearmax, and also allowed us to keep track of the
+                symptoms
+                that had already been inputted. Our final outside source was
+                APIMedic, an API
+                service that has a list of many ailments and symptoms that are
+                closely related
                 to them.</p>
 
             <p>
-                Following these basic steps, we had to make an actual "Bearmax" app
-                We started by creating an init function that checked if it was the user's first time
-                messaging the service- if this was the case, the user their age and their gender. Following
+                Following these basic steps, we had to make an actual "Bearmax"
+                app
+                We started by creating an init function that checked if it was
+                the user's first time
+                messaging the service- if this was the case, the user their age
+                and their gender. Following
                 this,
-                the app would ask the user for a symptom that they currently have. </p>
+                the app would ask the user for a symptom that they currently
+                have. </p>
             <p>
-                After inputting one symptom,the user would be faced with a "yes or no" question that asked
+                After inputting one symptom,the user would be faced with a "yes
+                or no" question that asked
                 if they had
-                a symptom that was closely related. The next symptom asked was found by using APIMedics
-                data on closely related symptoms to the one that the user inputted. If the user responded
-                "yes" to the question, we would find the symptom that is closest to the one the user said
+                a symptom that was closely related. The next symptom asked was
+                found by using APIMedics
+                data on closely related symptoms to the one that the user
+                inputted. If the user responded
+                "yes" to the question, we would find the symptom that is closest
+                to the one the user said
                 yes to
-                (avoiding repeats). If the user said no, the first element was popped, and Bearmax would ask
-                if they had the second most common symptom. This essentially created a "symptom" tree and
+                (avoiding repeats). If the user said no, the first element was
+                popped, and Bearmax would ask
+                if they had the second most common symptom. This essentially
+                created a "symptom" tree and
                 allowed
                 us to precisely estimate the symptom that the user had.</p>
             <p>
-                Once the user had said "yes" to 5 symptoms, Bearmax would diagnose them, and give them
-                a small description of the problem that they had and how they should treat it.
-            </p>
-            <h3>What I learned during this project</h3>
-            <p>This project was my first at a "large scale" hackathon and I can say without a doubt
-                that it was worth it. During this hackathon, I learned how to use:
-            <li>Facebook Developers</li>
-            <li>IBM's Watson (the Natural Language Processing aspect of it)</li>
-            <li>MongoDB</li>
-
-            This project is one of the ones that I am most proud of because I managed to throw myself
-            into how programming can be utilized. I showed myself that I can program well and
-            my team managed to win 2 prizes at one of the largest college hackathons as freshmen!
+                Once the user had said "yes" to 5 symptoms, Bearmax would
+                diagnose them, and give them
+                a small description of the problem that they had and how they
+                should treat it.
             </p>
         </div>
 
@@ -174,7 +202,8 @@
 
             <div class="col-md-3 col-sm-6 mb-4">
                 <a href="Megafind.html">
-                    <img class="img-fluid" src="./images/megafindwin.png" alt="">
+                    <img class="img-fluid" src="./images/megafindwin.png"
+                         alt="">
                 </a>
             </div>
 
@@ -215,7 +244,8 @@
                              src="./images/linkedinbw.png" width="35"
                              height="35"/>
                     </a>
-                    <a href="https://github.com/KartikKapur"><img src="./images/github.png" alt="" height=35></a>
+                    <a href="https://github.com/KartikKapur"><img
+                            src="./images/github.png" alt="" height=35></a>
                     <a href="https://www.quora.com/profile/Kartik-Kapur-1">
                         <img src="./images/quorabw.png" height="35">
                     </a>

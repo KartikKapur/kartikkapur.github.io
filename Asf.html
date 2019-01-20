@@ -4,7 +4,8 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="/images/karty.jpg">
@@ -15,7 +16,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans"
+          rel="stylesheet">
 
 </head>
 
@@ -25,8 +27,10 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="index.html">Kartik Kapur</a>
-        <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        <button class="navbar-toggler navbar-toggler-right custom-toggler"
+                type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,15 +46,20 @@
                     <a class="nav-link" href="aboutme.html">About Me</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" href="#"
+                       id="navbarDropdownPortfolio" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         Projects
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item" href="Megafind.html">Megafind</a>
+                    <div class="dropdown-menu dropdown-menu-right"
+                         aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item"
+                           href="Megafind.html">Megafind</a>
                         <a class="dropdown-item" href="Bearmax.html">Bearmax</a>
-                        <a class="dropdown-item" href="OutsideIn.html">OutsideIn</a>
-                        <a class="dropdown-item" href="Asf.html">Assignment Solutions Finder</a>
+                        <a class="dropdown-item"
+                           href="OutsideIn.html">OutsideIn</a>
+                        <a class="dropdown-item" href="Asf.html">Assignment
+                            Solutions Finder</a>
                     </div>
                 </li>
                 <li>
@@ -92,57 +101,68 @@
                 <a class="list-group-item">
                     <h3>Demo Steps</h3>
                     <li>The User inputs a PDF of their textbook</li>
-                    <li>User inputs a PDF that contains the section number of their problems and the number of
+                    <li>User inputs a PDF that contains the section number of
+                        their problems and the number of
                         the problems
                     </li>
-                    <li>The user gets an output of the problems they need to do, the reading that they must
+                    <li>The user gets an output of the problems they need to do,
+                        the reading that they must
                         complete
                         as well as a set of answers
                     </li>
                 </a>
-                <a href="https://github.com/KartikKapur/bearmax" class="btn btn-primary">Github Repo</a>
+                <a href="https://github.com/KartikKapur/bearmax"
+                   class="btn btn-primary">Github Repo</a>
             </div>
         </div>
         <div class="col-md-8 ">
             <img class="img-fluid" src="./images/54.png" alt="">
             <h3>Assignment Solutions Finder</h3>
-            <p> Assignment Solutions finder was the first outside of class project that I made while at
-                Berkeley. During this small scale hackathon, my team created an app that takes a input of
-                a PDF of section numbers a student needs to read, the problem numbers they need to respond to
-                and a PDF of the textbook. The app then outputs a PDF file that contains the required sections
+            <p> Assignment Solutions finder was the first outside of class
+                project that I made while at
+                Berkeley. During this small scale hackathon, my team created an
+                app that takes a input of
+                a PDF of section numbers a student needs to read, the problem
+                numbers they need to respond to
+                and a PDF of the textbook. The app then outputs a PDF file that
+                contains the required sections
                 to read, the required questions, and the answers.
             <p>
-                In order to create this project, we had to first figure out how to read the input PDF. We did
-                this by going on a very extensive search for a tool that could be used to read PDFs- eventually
+                In order to create this project, we had to first figure out how
+                to read the input PDF. We did
+                this by going on a very extensive search for a tool that could
+                be used to read PDFs- eventually
                 we
-                decided to use PDF tools. After this step, we had to figure out how to get the proper page
+                decided to use PDF tools. After this step, we had to figure out
+                how to get the proper page
                 number
-                This was done by creating a python file whose purpose was to find the designated page range.
+                This was done by creating a python file whose purpose was to
+                find the designated page range.
             </p>
             <p>
-                A problem that we ran into while making this app was that there was a discrepancy between the
+                A problem that we ran into while making this app was that there
+                was a discrepancy between the
                 actual
-                assigned page number and the page number of the PDF (as the PDF had pages including the title).
+                assigned page number and the page number of the PDF (as the PDF
+                had pages including the title).
                 To
-                account for this, we had to make a function that would calculate the offset. This was done by
+                account for this, we had to make a function that would calculate
+                the offset. This was done by
                 reading
-                part of the PDF and then finding the book page number and subtracting it from the PDF page
+                part of the PDF and then finding the book page number and
+                subtracting it from the PDF page
                 number.
-                After these details were done, we were able to gather the section readings and the problems that
+                After these details were done, we were able to gather the
+                section readings and the problems that
                 were required; however, we still had to work with Slader.
             </p>
             <p>
-                To solve this problem, we had to create a slader python file that would scrape
-                the Slader website in order to find the needed problems. Eventually, the output would give a PDF
-                of the problems and reading and the answers as provided by Slader.
-            </p>
-            <h3>What I learned during this project</h3>
-            <p>
-            <ul>
-                In this project, I learned a few skills including:
-                <li>Basics on how to scrape websites</li>
-                <li>How to work with PDFS</li>
-            </ul>
+                To solve this problem, we had to create a slader python file
+                that would scrape
+                the Slader website in order to find the needed problems.
+                Eventually, the output would give a PDF
+                of the problems and reading and the answers as provided by
+                Slader.
             </p>
 
         </div>
@@ -157,7 +177,8 @@
 
             <div class="col-md-3 col-sm-6 mb-4">
                 <a href="Megafind.html">
-                    <img class="img-fluid" src="./images/megafindwin.png" alt="">
+                    <img class="img-fluid" src="./images/megafindwin.png"
+                         alt="">
                 </a>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
@@ -172,7 +193,6 @@
                     <img class="img-fluid" src="./images/outsidein.jpg" alt="">
                 </a>
             </div>
-
 
 
             <div class="col-md-3 col-sm-6 mb-4">
@@ -200,7 +220,8 @@
                              src="./images/linkedinbw.png" width="35"
                              height="35"/>
                     </a>
-                    <a href="https://github.com/KartikKapur"><img src="./images/github.png" alt="" height=35></a>
+                    <a href="https://github.com/KartikKapur"><img
+                            src="./images/github.png" alt="" height=35></a>
                     <a href="https://www.quora.com/profile/Kartik-Kapur-1">
                         <img src="./images/quorabw.png" height="35">
                     </a>
@@ -245,7 +266,8 @@
         }
       }
     }
-</script>
+
+    </script>
 
 </body>
 
