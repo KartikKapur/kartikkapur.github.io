@@ -175,6 +175,84 @@ function proceedPlayer1() {
   // Kept for compatibility but not used
 }
 
+// Progressive Reveal State
+let resultsReveal = {
+  player: 1, // 1 or 2
+  questionIndex: 0,
+  revealStep: 0, // 0: show question, 1: show answer, 2: show points
+  runningTotal: 0,
+};
+
+// Start the progressive reveal for given player
+function showProgressiveResults(player) {
+  resultsReveal = { player, questionIndex: 0, revealStep: 0, runningTotal: 0 };
+  showScreen(player === 1 ? 'player1-results-screen' : 'player2-results-screen');
+  renderResultsStep();
+}
+
+function renderResultsStep() {
+  const ansArr = resultsReveal.player === 1 ? gameState.player1Answers : gameState.player2Answers;
+  const qIdx = resultsReveal.questionIndex;
+  const answer = ansArr[qIdx];
+  const question = gameData.questions[answer.questionIndex];
+  const area = document.getElementById(resultsReveal.player === 1 ? 'p1-reveal-area' : 'p2-reveal-area');
+  const btn = document.getElementById(resultsReveal.player === 1 ? 'p1-reveal-btn' : 'p2-reveal-btn');
+  area.innerHTML = '';
+
+  // Step 0: Just Question
+  if (resultsReveal.revealStep === 0) {
+    area.innerHTML = `<div class="reveal-question">Q${qIdx + 1}: ${question.question}</div>`;
+    btn.textContent = "Show Answer";
+  } else if (resultsReveal.revealStep === 1) {
+    // Step 1: Question + answer
+    area.innerHTML = `
+      <div class="reveal-question">Q${qIdx + 1}: ${question.question}</div>
+      <div class="reveal-answer"><span class="reveal-answer-text">${answer.text}</span></div>`;
+    btn.textContent = "Show Points";
+  } else if (resultsReveal.revealStep === 2) {
+    // Step 2: all
+    resultsReveal.runningTotal += answer.points;
+    area.innerHTML = `
+      <div class="reveal-question">Q${qIdx + 1}: ${question.question}</div>
+      <div class="reveal-answer">
+        <span class="reveal-answer-text">${answer.text}</span>
+        <span class="reveal-points">+${answer.points}</span>
+      </div>
+      <div class="reveal-total">Running Total: ${resultsReveal.runningTotal}</div>`;
+    // Button for advance or finish
+    if (qIdx === ansArr.length - 1) {
+      btn.textContent = resultsReveal.player === 1 ? "Continue to Player 2" : "See Final Score";
+    } else {
+      btn.textContent = "Next Question";
+    }
+  }
+}
+
+function advanceResultsStep(player) {
+  if (resultsReveal.revealStep < 2) {
+    resultsReveal.revealStep++;
+    renderResultsStep();
+  } else {
+    // Move to next question or finish
+    const ansArr = player === 1 ? gameState.player1Answers : gameState.player2Answers;
+    if (resultsReveal.questionIndex < ansArr.length - 1) {
+      resultsReveal.questionIndex++;
+      resultsReveal.revealStep = 0;
+      renderResultsStep();
+    } else {
+      // End of results for this player
+      const totalContainer = document.getElementById(player === 1 ? 'p1-total-container' : 'p2-total-container');
+      const totalValue = document.getElementById(player === 1 ? 'p1-total-value' : 'p2-total-value');
+      const continueBtn = document.getElementById(player === 1 ? 'p1-continue-btn' : 'p2-continue-btn');
+      totalValue.textContent = resultsReveal.runningTotal;
+      totalContainer.style.display = 'block';
+      continueBtn.style.display = 'block';
+      document.getElementById(player === 1 ? 'p1-reveal-btn' : 'p2-reveal-btn').style.display = 'none';
+    }
+  }
+}
+
+
 function showPlayer1Results() {
   showScreen('player1-results-screen');
   

@@ -114,20 +114,15 @@
         </div>
 
         <!-- Player 1 Results Screen -->
+        <!-- Player 1 Results -->
         <div id="player1-results-screen" class="screen">
-            <div class="results-reveal-container">
-                <h1 class="reveal-title">PLAYER 1 RESULTS</h1>
-                <div id="p1-results-items" class="reveal-items">
-                    <!-- Results will be animated here -->
-                </div>
-                <div id="p1-total-container" class="total-container" style="display: none;">
-                    <div class="total-label">Player 1 Total:</div>
-                    <div class="total-value" id="p1-total-value">0</div>
-                </div>
-                <button class="btn-primary" id="p1-continue-btn" onclick="continueToPlayer2()" style="display: none; margin-top: 20px;">Continue to Player 2</button>
+            <div id="p1-reveal-area"></div>
+            <button id="p1-reveal-btn" onclick="advanceResultsStep(1)"></button>
+            <div id="p1-total-container" style="display:none">
+            <span>Total Score: <span id="p1-total-value"></span></span>
+            <button id="p1-continue-btn" style="display:none" onclick="continueToPlayer2()">Continue to Player 2</button>
             </div>
         </div>
-
         <!-- Transition Screen -->
         <div id="transition-screen" class="screen">
             <div class="transition-content">
@@ -155,22 +150,16 @@
                 </div>
             </div>
         </div>
-
-        <!-- Player 2 Results Screen -->
-        <div id="player2-results-screen" class="screen">
-            <div class="results-reveal-container">
-                <h1 class="reveal-title">PLAYER 2 RESULTS</h1>
-                <div id="p2-results-items" class="reveal-items">
-                    <!-- Results will be animated here -->
-                </div>
-                <div id="p2-total-container" class="total-container" style="display: none;">
-                    <div class="total-label">Player 2 Total:</div>
-                    <div class="total-value" id="p2-total-value">0</div>
-                </div>
-                <button class="btn-primary" id="p2-continue-btn" onclick="showCombinedResults()" style="display: none; margin-top: 20px;">See Final Score</button>
-            </div>
+  
+    <!-- Player 2 Results (similar, different ids) -->
+    <div id="player2-results-screen" class="screen">
+        <div id="p2-reveal-area"></div>
+        <button id="p2-reveal-btn" onclick="advanceResultsStep(2)"></button>
+        <div id="p2-total-container" style="display:none">
+        <span>Total Score: <span id="p2-total-value"></span></span>
+        <button id="p2-continue-btn" style="display:none" onclick="showCombinedResults()">See Final Score</button>
         </div>
-
+    </div>
         <!-- Combined Results Screen -->
         <div id="combined-results-screen" class="screen">
             <div class="transition-content">
