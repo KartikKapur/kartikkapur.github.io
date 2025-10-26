@@ -556,6 +556,43 @@ async function copyPrompt() {
   }
 }
 
+async function navigateToPerplexity() {
+  const promptText = document.getElementById('promptDisplay').textContent;
+  const copyBtn = document.getElementById('routeToPplxBtn');
+  const originalText = copyBtn.textContent;
+  const originalBg = copyBtn.style.backgroundColor;
+  
+  try {
+    // Encode the prompt for URL use
+    const encodedPrompt = encodeURIComponent(promptText);
+    
+    // Construct the Perplexity URL with the query parameter
+    const perplexityUrl = `https://www.perplexity.ai/?q=${encodedPrompt}`;
+    
+    // Open in a new tab
+    window.open(perplexityUrl, '_blank');
+    
+    // Show feedback
+    copyBtn.textContent = '✓ Opened in new tab';
+    copyBtn.style.backgroundColor = '#4CAF50';
+    
+    // Reset button after 2 seconds
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.style.backgroundColor = originalBg;
+    }, 2000);
+  } catch (err) {
+    copyBtn.textContent = 'Failed to open';
+    copyBtn.style.backgroundColor = '#f44336';
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.style.backgroundColor = originalBg;
+    }, 2000);
+  }
+}
+
+
+
 function clearJSON() {
   document.getElementById('custom-json-input').value = '';
   hideError();
