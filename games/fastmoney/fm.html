@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Feud Fast Money!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="screen active">
+            <div class="setup-container">
+                <h1 class="setup-title">🎮 Custom Family Feud</h1>
+                <p class="setup-subtitle">Create your own game!</p>
+                
+                <!-- Section 1: LLM Prompt -->
+                <div class="setup-section">
+                    <h2 class="section-title">💡 Generate Questions with Perplexity</h2>
+                    <p class="section-description">Copy this prompt and paste it into <a href="https://perplexity.ai">Perplexity</a>:</p>
+                    <div class="theme-input-container">
+                        <label for="theme-input" class="theme-label">Theme (Optional):</label>
+                        <input type="text" id="themeInput" class="theme-input" placeholder="e.g., Office Life, Sports, Cooking, Travel, etc." oninput="updatePrompt()">
+                    </div>
+                    <div class="prompt-box">
+                        <pre class="prompt-text" id="promptDisplay">Generate 5 creative Family Feud Fast Money questions in JSON format. Each question should have 6 answers ranked by popularity. The point values for each question must add up to exactly 100. Use varied point values (not just multiples of 5). Make the questions fun and non-obvious. Format as JSON with this structure:
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Your question here?",
+      "answers": [
+        {"text": "Answer 1", "points": 30},
+        {"text": "Answer 2", "points": 25},
+        {"text": "Answer 3", "points": 20},
+        {"text": "Answer 4", "points": 13},
+        {"text": "Answer 5", "points": 8},
+        {"text": "Answer 6", "points": 4}
+      ]
+    }
+  ]
+}</pre>
+                        <button class="copy-btn" id="copyPromptBtn" onclick="copyPrompt()">📋 Copy Prompt</button>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Paste Custom JSON -->
+                <div class="setup-section">
+                    <h2 class="section-title">📝 Paste Your Custom Questions</h2>
+                    <p class="section-description">Paste the AI-generated JSON here:</p>
+                    <textarea id="custom-json-input" class="json-textarea" placeholder='Paste your JSON here...'></textarea>
+                    <div class="error-message" id="error-message"></div>
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="clearJSON()">Clear</button>
+                        <button class="btn-primary" onclick="validateAndStartCustom()">Validate &amp; Start Game</button>
+                    </div>
+                </div>
+                
+                <!-- Section 3: Or Use Default -->
+                <div class="setup-section">
+                    <h2 class="section-title">🎲 Or Use Default Questions</h2>
+                    <p class="section-description">Play with our pre-made questions about everyday life</p>
+                    <button class="btn-default" onclick="startWithDefault()">Play with Default Questions</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen">
+            <div class="game-logo">
+                <h1 class="logo-text">⚡ FAST MONEY ⚡</h1>
+                <div class="logo-subtitle">Family Feud Party Edition</div>
+            </div>
+            <div class="rules-card">
+                <h2>🎮 How to Play</h2>
+                <div class="rules-list">
+                    <div class="rule-item">
+                        <span class="rule-number">1</span>
+                        <span class="rule-text"><strong>Player 1</strong> answers 5 questions</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-number">2</span>
+                        <span class="rule-text"><strong>Player 2</strong> answers the same questions</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-number">3</span>
+                        <span class="rule-text"><strong>Click answer buttons</strong> - no typing needed!</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-number">4</span>
+                        <span class="rule-text">Get <strong>200+ points</strong> to WIN! 🏆</span>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="startGame()">START GAME</button>
+        </div>
+
+        <!-- Player 1 Screen -->
+        <div id="player1-screen" class="screen">
+            <div class="player-header player1-header">
+                <div class="player-badge">PLAYER 1</div>
+                <div class="question-counter">Question <span id="p1-question-num">1</span> of 5</div>
+            </div>
+            <div class="question-card">
+                <h2 class="question-text" id="p1-question"></h2>
+                <div class="instruction-text">Click your answer choice:</div>
+                <div class="answer-buttons" id="p1-answer-buttons">
+                    <!-- Answer buttons will be dynamically added here -->
+                </div>
+                <div class="next-button-container" id="p1-next-container" style="display: none;">
+                    <button class="btn-next" id="p1-next-btn" onclick="proceedPlayer1()">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player 1 Results Screen -->
+        <div id="player1-results-screen" class="screen">
+            <div class="results-reveal-container">
+                <h1 class="reveal-title">PLAYER 1 RESULTS</h1>
+                <div id="p1-results-items" class="reveal-items">
+                    <!-- Results will be animated here -->
+                </div>
+                <div id="p1-total-container" class="total-container" style="display: none;">
+                    <div class="total-label">Player 1 Total:</div>
+                    <div class="total-value" id="p1-total-value">0</div>
+                </div>
+                <button class="btn-primary" id="p1-continue-btn" onclick="continueToPlayer2()" style="display: none; margin-top: 20px;">Continue to Player 2</button>
+            </div>
+        </div>
+
+        <!-- Transition Screen -->
+        <div id="transition-screen" class="screen">
+            <div class="transition-content">
+                <div class="transition-icon">🔄</div>
+                <h1 class="transition-title">PLAYER 2'S TURN!</h1>
+                <p class="transition-text">Player 1, look away! 🙈</p>
+                <button class="btn-primary" onclick="startPlayer2()">LET'S GO!</button>
+            </div>
+        </div>
+
+        <!-- Player 2 Screen -->
+        <div id="player2-screen" class="screen">
+            <div class="player-header player2-header">
+                <div class="player-badge">PLAYER 2</div>
+                <div class="question-counter">Question <span id="p2-question-num">1</span> of 5</div>
+            </div>
+            <div class="question-card">
+                <h2 class="question-text" id="p2-question"></h2>
+                <div class="instruction-text">Click your answer choice (grayed out = already picked by Player 1):</div>
+                <div class="answer-buttons" id="p2-answer-buttons">
+                    <!-- Answer buttons will be dynamically added here -->
+                </div>
+                <div class="next-button-container" id="p2-next-container" style="display: none;">
+                    <button class="btn-next" id="p2-next-btn" onclick="proceedPlayer2()">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player 2 Results Screen -->
+        <div id="player2-results-screen" class="screen">
+            <div class="results-reveal-container">
+                <h1 class="reveal-title">PLAYER 2 RESULTS</h1>
+                <div id="p2-results-items" class="reveal-items">
+                    <!-- Results will be animated here -->
+                </div>
+                <div id="p2-total-container" class="total-container" style="display: none;">
+                    <div class="total-label">Player 2 Total:</div>
+                    <div class="total-value" id="p2-total-value">0</div>
+                </div>
+                <button class="btn-primary" id="p2-continue-btn" onclick="showCombinedResults()" style="display: none; margin-top: 20px;">See Final Score</button>
+            </div>
+        </div>
+
+        <!-- Combined Results Screen -->
+        <div id="combined-results-screen" class="screen">
+            <div class="transition-content">
+                <div class="transition-icon">🎊</div>
+                <h1 class="transition-title">COMBINED RESULTS</h1>
+                <div class="combined-scores">
+                    <div class="player-score-row">
+                        <span class="player-label">Player 1:</span>
+                        <span class="score-display" id="p1-combined-score">0</span>
+                    </div>
+                    <div class="player-score-row">
+                        <span class="player-label">Player 2:</span>
+                        <span class="score-display" id="p2-combined-score">0</span>
+                    </div>
+                    <div class="total-score-row">
+                        <span class="total-label">COMBINED TOTAL:</span>
+                        <span class="total-display" id="combined-total-score">0</span>
+                    </div>
+                    <div class="win-status" id="win-status"></div>
+                </div>
+                <button class="btn-primary" onclick="showTopAnswers()">See All Top Answers</button>
+            </div>
+        </div>
+
+        <!-- Top Answers Screen -->
+        <div id="top-answers-screen" class="screen">
+            <div class="top-answers-container">
+                <h1 class="top-answers-title">📊 TOP ANSWERS 📊</h1>
+                <div class="top-answers-subtitle">Here's what the survey said!</div>
+                <div id="top-answers-list" class="top-answers-list">
+                    <!-- Top answers will be dynamically added here -->
+                </div>
+                <button class="btn-primary" onclick="showCelebration()">CONTINUE</button>
+            </div>
+        </div>
+
+        <!-- Final Celebration Screen -->
+        <div id="celebration-screen" class="screen">
+            <div class="celebration-container">
+                <div class="celebration-icon" id="celebration-icon">🎉</div>
+                <h1 class="celebration-title" id="celebration-title">YOU WIN!</h1>
+                <div class="celebration-message" id="celebration-message"></div>
+                <button class="btn-primary" onclick="resetGame()">PLAY AGAIN</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
