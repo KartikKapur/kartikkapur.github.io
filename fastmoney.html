@@ -17,8 +17,8 @@
         
         <!-- Theme-Based Generation -->
         <div class="setup-section">
-          <h2 class="section-title">🎯 Option 1: Generate Questions</h2>
-          <p class="section-description">Enter a theme, copy the prompt, and use Perplexity to generate custom questions!</p>
+          <h2 class="section-title">🎯 Option 1: Generate Questions with AI</h2>
+          <p class="section-description">Enter a theme, copy the prompt, and use Perplexity AI to generate custom questions!</p>
           
           <div class="theme-input-container">
             <label for="themeInput" class="theme-label">Enter a theme (optional):</label>
@@ -35,10 +35,10 @@
             <pre class="prompt-text" id="promptDisplay"></pre>
           </div>
           
-          <button class="copy-btn" id="routeToPplxBtn" onclick="navigateToPerplexity()">📋 Get Queries from Perplexity</button>
+          <button class="copy-btn" id="copyPromptBtn" onclick="copyPrompt()">📋 Copy Prompt for AI</button>
           
           <p style="text-align: center; margin-top: 15px; color: var(--color-slate-500); font-size: 0.95rem;">
-            Past the result from perplexity 
+            Copy this prompt and paste it into 
             <a href="https://www.perplexity.ai" target="_blank" style="color: var(--game-purple); font-weight: 600;">Perplexity AI</a>, 
             then paste the JSON response below!
           </p>
@@ -130,7 +130,7 @@
         
         <div id="p1-total-container" class="total-container" style="display: none;">
           <div class="total-label">Player 1 Final Score</div>
-          <div class="total-value" id="p1-total-value" style="color: #4adb62; font-size: 5rem; text-shadow: 3px 3px 16px rgba(74, 219, 98, 0.4);">0</div>
+          <div class="total-value" id="p1-total-value">0</div>
         </div>
         
         <button id="p1-continue-btn" class="btn-primary" onclick="continueToPlayer2()" style="display: none; margin-top: 30px;">Continue to Player 2 →</button>
@@ -175,7 +175,7 @@
         
         <div id="p2-total-container" class="total-container" style="display: none;">
           <div class="total-label">Player 2 Final Score</div>
-          <div class="total-value" id="p2-total-value" style="color: #4adb62; font-size: 5rem; text-shadow: 3px 3px 16px rgba(74, 219, 98, 0.4);">0</div>
+          <div class="total-value" id="p2-total-value">0</div>
         </div>
         
         <button id="p2-continue-btn" class="btn-primary" onclick="showCombinedResults()" style="display: none; margin-top: 30px;">See Combined Results →</button>

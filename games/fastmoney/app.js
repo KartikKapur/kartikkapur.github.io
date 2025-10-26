@@ -97,8 +97,8 @@ function showScreen(screenId) {
 
 // Game Flow Functions
 function startGame() {
-  // Shuffle questions at the start of each game
-  gameData.questions = shuffle(gameData.questions);
+  // DON'T shuffle questions - keep in original order
+  // DO shuffle answers once per game - same order for both players
   
   gameState = {
     currentPlayer: 1,
@@ -106,8 +106,18 @@ function startGame() {
     player1Answers: [],
     player2Answers: [],
     player1Score: 0,
-    player2Score: 0
+    player2Score: 0,
+    answerOrders: {} // Store shuffled answer indices for each question
   };
+  
+  // Create shuffled answer order for each question
+  gameData.questions.forEach((question, qIndex) => {
+    // Create array of indices [0, 1, 2, 3, 4, 5]
+    const indices = question.answers.map((_, i) => i);
+    // Shuffle the indices
+    gameState.answerOrders[qIndex] = shuffle(indices);
+  });
+  
   showScreen('player1-screen');
   displayPlayer1Question();
 }
@@ -119,18 +129,21 @@ function displayPlayer1Question() {
   document.getElementById('p1-question-num').textContent = questionNum;
   document.getElementById('p1-question').textContent = question.question;
   
-  // Create answer buttons
+  // Get shuffled answer order for this question
+  const shuffledIndices = gameState.answerOrders[gameState.currentQuestion];
+  
+  // Create answer buttons in shuffled order
   const buttonsContainer = document.getElementById('p1-answer-buttons');
   buttonsContainer.innerHTML = '';
   
-  question.answers.forEach((answer, index) => {
+  shuffledIndices.forEach((originalIndex, buttonPosition) => {
+    const answer = question.answers[originalIndex];
     const button = document.createElement('button');
     button.className = 'answer-btn player1-btn';
     button.innerHTML = `
       <span class="answer-text">${answer.text}</span>
-      <span class="answer-points" style="display:none;">${answer.points} pts</span>
     `;
-    button.onclick = () => selectPlayer1Answer(index);
+    button.onclick = () => selectPlayer1Answer(originalIndex, buttonPosition);
     buttonsContainer.appendChild(button);
   });
   
@@ -139,13 +152,12 @@ function displayPlayer1Question() {
   noMatchButton.className = 'answer-btn player1-btn no-match';
   noMatchButton.innerHTML = `
     <span class="answer-text">No Match</span>
-    <span class="answer-points" style="display:none;">0 pts</span>
   `;
-  noMatchButton.onclick = () => selectPlayer1Answer(question.answers.length);
+  noMatchButton.onclick = () => selectPlayer1Answer(question.answers.length, shuffledIndices.length);
   buttonsContainer.appendChild(noMatchButton);
 }
 
-function selectPlayer1Answer(answerIndex) {
+function selectPlayer1Answer(answerIndex, buttonPosition) {
   const question = gameData.questions[gameState.currentQuestion];
   
   // Check if "No Match" was selected
@@ -164,10 +176,10 @@ function selectPlayer1Answer(answerIndex) {
     points: selectedAnswer.points
   });
   
-  // Add visual feedback
+  // Add visual feedback - use buttonPosition to highlight the exact button clicked
   const buttons = document.querySelectorAll('#p1-answer-buttons .answer-btn');
   buttons.forEach(btn => btn.disabled = true);
-  buttons[answerIndex].classList.add('clicked');
+  buttons[buttonPosition].classList.add('clicked');
   
   // AUTO-ADVANCE: Move to next question or results after a short delay
   setTimeout(() => {
@@ -323,23 +335,26 @@ function displayPlayer2Question() {
   const player1Answer = gameState.player1Answers.find(a => a.questionIndex === gameState.currentQuestion);
   const player1AnswerIndex = player1Answer ? player1Answer.answerIndex : -1;
   
-  // Create answer buttons
+  // Get shuffled answer order for this question (same as Player 1)
+  const shuffledIndices = gameState.answerOrders[gameState.currentQuestion];
+  
+  // Create answer buttons in same shuffled order as Player 1
   const buttonsContainer = document.getElementById('p2-answer-buttons');
   buttonsContainer.innerHTML = '';
   
-  question.answers.forEach((answer, index) => {
+  shuffledIndices.forEach((originalIndex, buttonPosition) => {
+    const answer = question.answers[originalIndex];
     const button = document.createElement('button');
     button.className = 'answer-btn player2-btn';
     button.innerHTML = `
       <span class="answer-text">${answer.text}</span>
-      <span class="answer-points" style="display:none;">${answer.points} pts</span>
     `;
     
     // Disable if Player 1 picked this answer
-    if (index === player1AnswerIndex) {
+    if (originalIndex === player1AnswerIndex) {
       button.disabled = true;
     } else {
-      button.onclick = () => selectPlayer2Answer(index);
+      button.onclick = () => selectPlayer2Answer(originalIndex, buttonPosition);
     }
     
     buttonsContainer.appendChild(button);
@@ -350,18 +365,17 @@ function displayPlayer2Question() {
   noMatchButton.className = 'answer-btn player2-btn no-match';
   noMatchButton.innerHTML = `
     <span class="answer-text">No Match</span>
-    <span class="answer-points" style="display:none;">0 pts</span>
   `;
   // Disable if Player 1 picked "No Match"
   if (player1AnswerIndex >= question.answers.length) {
     noMatchButton.disabled = true;
   } else {
-    noMatchButton.onclick = () => selectPlayer2Answer(question.answers.length);
+    noMatchButton.onclick = () => selectPlayer2Answer(question.answers.length, shuffledIndices.length);
   }
   buttonsContainer.appendChild(noMatchButton);
 }
 
-function selectPlayer2Answer(answerIndex) {
+function selectPlayer2Answer(answerIndex, buttonPosition) {
   const question = gameData.questions[gameState.currentQuestion];
   
   // Check if "No Match" was selected
@@ -380,10 +394,10 @@ function selectPlayer2Answer(answerIndex) {
     points: selectedAnswer.points
   });
   
-  // Add visual feedback
+  // Add visual feedback - use buttonPosition to highlight the exact button clicked
   const buttons = document.querySelectorAll('#p2-answer-buttons .answer-btn');
   buttons.forEach(btn => btn.disabled = true);
-  buttons[answerIndex].classList.add('clicked');
+  buttons[buttonPosition].classList.add('clicked');
   
   // AUTO-ADVANCE: Move to next question or results after a short delay
   setTimeout(() => {
@@ -402,41 +416,6 @@ function selectPlayer2Answer(answerIndex) {
 // This function is no longer needed with auto-advance
 function proceedPlayer2() {
   // Kept for compatibility but not used
-}
-
-async function navigateToPerplexity() {
-  const promptText = document.getElementById('promptDisplay').textContent;
-  const copyBtn = document.getElementById('routeToPplxBtn');
-  const originalText = copyBtn.textContent;
-  const originalBg = copyBtn.style.backgroundColor;
-  
-  try {
-    // Encode the prompt for URL use
-    const encodedPrompt = encodeURIComponent(promptText);
-    
-    // Construct the Perplexity URL with the query parameter
-    const perplexityUrl = `https://www.perplexity.ai/?q=${encodedPrompt}`;
-    
-    // Open in a new tab
-    window.open(perplexityUrl, '_blank');
-    
-    // Show feedback
-    copyBtn.textContent = '✓ Opened in new tab';
-    copyBtn.style.backgroundColor = '#4CAF50';
-    
-    // Reset button after 2 seconds
-    setTimeout(() => {
-      copyBtn.textContent = originalText;
-      copyBtn.style.backgroundColor = originalBg;
-    }, 2000);
-  } catch (err) {
-    copyBtn.textContent = 'Failed to open';
-    copyBtn.style.backgroundColor = '#f44336';
-    setTimeout(() => {
-      copyBtn.textContent = originalText;
-      copyBtn.style.backgroundColor = originalBg;
-    }, 2000);
-  }
 }
 
 function showPlayer2Results() {

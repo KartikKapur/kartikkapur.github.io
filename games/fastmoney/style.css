@@ -1499,29 +1499,32 @@ body {
   margin-top: 20px;
   animation: fadeIn 0.5s;
   border: none;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
 }
 
 .total-label {
   font-size: 1.5rem;
   color: #FFFFFF;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .total-value {
-  font-size: 4rem;
+  font-size: 5rem;
   color: #10B981;
   font-weight: 900;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  text-shadow: 3px 3px 6px rgba(16, 185, 129, 0.4);
 }
 
 .running-total {
   text-align: center;
-  padding: 24px 40px 18px 40px;
+  padding: 24px 40px 20px 40px;
   background: #8B5CF6;
   border-radius: 18px;
   margin-bottom: 20px;
-  border: 3px solid #6D28D9;
+  border: none;
   box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
   animation: popIn 0.4s ease-out;
 }
@@ -1541,14 +1544,16 @@ body {
   font-size: 1.3rem;
   color: #FFFFFF;
   font-weight: 900;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .running-total-value {
-  font-size: 2em;
+  font-size: 3rem;
   color: #10B981;
   font-weight: 900;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(16, 185, 129, 0.3);
 }
 
 /* Transition Screen */
