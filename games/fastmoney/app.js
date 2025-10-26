@@ -67,6 +67,16 @@ const defaultGameData = {
 // Active game data (can be default or custom)
 let gameData = defaultGameData;
 
+// Utility: Shuffle array
+function shuffle(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 // Game State
 let gameState = {
   currentPlayer: 1,
@@ -87,6 +97,9 @@ function showScreen(screenId) {
 
 // Game Flow Functions
 function startGame() {
+  // Shuffle questions at the start of each game
+  gameData.questions = shuffle(gameData.questions);
+  
   gameState = {
     currentPlayer: 1,
     currentQuestion: 0,
@@ -115,7 +128,7 @@ function displayPlayer1Question() {
     button.className = 'answer-btn player1-btn';
     button.innerHTML = `
       <span class="answer-text">${answer.text}</span>
-      <span class="answer-points">${answer.points} pts</span>
+      <span class="answer-points" style="display:none;">${answer.points} pts</span>
     `;
     button.onclick = () => selectPlayer1Answer(index);
     buttonsContainer.appendChild(button);
@@ -126,7 +139,7 @@ function displayPlayer1Question() {
   noMatchButton.className = 'answer-btn player1-btn no-match';
   noMatchButton.innerHTML = `
     <span class="answer-text">No Match</span>
-    <span class="answer-points">0 pts</span>
+    <span class="answer-points" style="display:none;">0 pts</span>
   `;
   noMatchButton.onclick = () => selectPlayer1Answer(question.answers.length);
   buttonsContainer.appendChild(noMatchButton);
@@ -175,84 +188,6 @@ function proceedPlayer1() {
   // Kept for compatibility but not used
 }
 
-// Progressive Reveal State
-let resultsReveal = {
-  player: 1, // 1 or 2
-  questionIndex: 0,
-  revealStep: 0, // 0: show question, 1: show answer, 2: show points
-  runningTotal: 0,
-};
-
-// Start the progressive reveal for given player
-function showProgressiveResults(player) {
-  resultsReveal = { player, questionIndex: 0, revealStep: 0, runningTotal: 0 };
-  showScreen(player === 1 ? 'player1-results-screen' : 'player2-results-screen');
-  renderResultsStep();
-}
-
-function renderResultsStep() {
-  const ansArr = resultsReveal.player === 1 ? gameState.player1Answers : gameState.player2Answers;
-  const qIdx = resultsReveal.questionIndex;
-  const answer = ansArr[qIdx];
-  const question = gameData.questions[answer.questionIndex];
-  const area = document.getElementById(resultsReveal.player === 1 ? 'p1-reveal-area' : 'p2-reveal-area');
-  const btn = document.getElementById(resultsReveal.player === 1 ? 'p1-reveal-btn' : 'p2-reveal-btn');
-  area.innerHTML = '';
-
-  // Step 0: Just Question
-  if (resultsReveal.revealStep === 0) {
-    area.innerHTML = `<div class="reveal-question">Q${qIdx + 1}: ${question.question}</div>`;
-    btn.textContent = "Show Answer";
-  } else if (resultsReveal.revealStep === 1) {
-    // Step 1: Question + answer
-    area.innerHTML = `
-      <div class="reveal-question">Q${qIdx + 1}: ${question.question}</div>
-      <div class="reveal-answer"><span class="reveal-answer-text">${answer.text}</span></div>`;
-    btn.textContent = "Show Points";
-  } else if (resultsReveal.revealStep === 2) {
-    // Step 2: all
-    resultsReveal.runningTotal += answer.points;
-    area.innerHTML = `
-      <div class="reveal-question">Q${qIdx + 1}: ${question.question}</div>
-      <div class="reveal-answer">
-        <span class="reveal-answer-text">${answer.text}</span>
-        <span class="reveal-points">+${answer.points}</span>
-      </div>
-      <div class="reveal-total">Running Total: ${resultsReveal.runningTotal}</div>`;
-    // Button for advance or finish
-    if (qIdx === ansArr.length - 1) {
-      btn.textContent = resultsReveal.player === 1 ? "Continue to Player 2" : "See Final Score";
-    } else {
-      btn.textContent = "Next Question";
-    }
-  }
-}
-
-function advanceResultsStep(player) {
-  if (resultsReveal.revealStep < 2) {
-    resultsReveal.revealStep++;
-    renderResultsStep();
-  } else {
-    // Move to next question or finish
-    const ansArr = player === 1 ? gameState.player1Answers : gameState.player2Answers;
-    if (resultsReveal.questionIndex < ansArr.length - 1) {
-      resultsReveal.questionIndex++;
-      resultsReveal.revealStep = 0;
-      renderResultsStep();
-    } else {
-      // End of results for this player
-      const totalContainer = document.getElementById(player === 1 ? 'p1-total-container' : 'p2-total-container');
-      const totalValue = document.getElementById(player === 1 ? 'p1-total-value' : 'p2-total-value');
-      const continueBtn = document.getElementById(player === 1 ? 'p1-continue-btn' : 'p2-continue-btn');
-      totalValue.textContent = resultsReveal.runningTotal;
-      totalContainer.style.display = 'block';
-      continueBtn.style.display = 'block';
-      document.getElementById(player === 1 ? 'p1-reveal-btn' : 'p2-reveal-btn').style.display = 'none';
-    }
-  }
-}
-
-
 function showPlayer1Results() {
   showScreen('player1-results-screen');
   
@@ -262,29 +197,101 @@ function showPlayer1Results() {
   const resultsContainer = document.getElementById('p1-results-items');
   resultsContainer.innerHTML = '';
   
-  // Show ALL results at once
-  gameState.player1Answers.forEach((answer, index) => {
+  // Progressive reveal state with 3 steps per question
+  let currentRevealIndex = 0;
+  let revealStep = 0; // 0 = show question, 1 = show answer, 2 = show points
+  let runningTotal = 0;
+  
+  // Create running total display
+  const runningTotalDiv = document.createElement('div');
+  runningTotalDiv.id = 'p1-running-total';
+  runningTotalDiv.className = 'running-total';
+  runningTotalDiv.style.display = 'none';
+  runningTotalDiv.innerHTML = `
+    <div class="running-total-label">Running Total:</div>
+    <div class="running-total-value" id="p1-running-value">0</div>
+  `;
+  resultsContainer.appendChild(runningTotalDiv);
+  
+  // Create main reveal button
+  const mainRevealBtn = document.createElement('button');
+  mainRevealBtn.className = 'btn-primary';
+  mainRevealBtn.textContent = 'Start Reveal';
+  mainRevealBtn.style.marginTop = '20px';
+  resultsContainer.appendChild(mainRevealBtn);
+  
+  // Current question display container
+  const currentQuestionDiv = document.createElement('div');
+  currentQuestionDiv.id = 'p1-current-reveal';
+  resultsContainer.insertBefore(currentQuestionDiv, mainRevealBtn);
+  
+  mainRevealBtn.onclick = () => {
+    if (currentRevealIndex >= gameState.player1Answers.length) {
+      // All revealed - show total and continue
+      mainRevealBtn.style.display = 'none';
+      document.getElementById('p1-total-value').textContent = gameState.player1Score;
+      document.getElementById('p1-total-container').style.display = 'block';
+      document.getElementById('p1-continue-btn').style.display = 'block';
+      return;
+    }
+    
+    const answer = gameState.player1Answers[currentRevealIndex];
     const question = gameData.questions[answer.questionIndex];
     
-    const revealItem = document.createElement('div');
-    revealItem.className = 'reveal-item';
-    revealItem.style.animationDelay = `${index * 0.1}s`;
-    
-    revealItem.innerHTML = `
-      <div class="reveal-question">Q${index + 1}: ${question.question}</div>
-      <div class="reveal-answer">
-        <span class="reveal-answer-text">${answer.text}</span>
-        <span class="reveal-points">+${answer.points}</span>
-      </div>
-    `;
-    
-    resultsContainer.appendChild(revealItem);
-  });
+    if (revealStep === 0) {
+      // Step 1: Show question text only
+      currentQuestionDiv.innerHTML = `
+        <div class="reveal-item" style="animation-delay: 0s;">
+          <div class="reveal-question">Q${currentRevealIndex + 1}: ${question.question}</div>
+        </div>
+      `;
+      
+      revealStep = 1;
+      mainRevealBtn.textContent = 'Show Answer';
+      
+      // Show running total on first question
+      if (currentRevealIndex === 0) {
+        document.getElementById('p1-running-total').style.display = 'block';
+      }
+    } else if (revealStep === 1) {
+      // Step 2: Show player's answer (points still hidden)
+      currentQuestionDiv.innerHTML = `
+        <div class="reveal-item" style="animation-delay: 0s;">
+          <div class="reveal-question">Q${currentRevealIndex + 1}: ${question.question}</div>
+          <div class="reveal-answer-row">
+            <div class="reveal-answer-info">
+              <span class="reveal-answer-text">${answer.text}</span>
+              <span class="reveal-points hidden" id="p1-current-points">+${answer.points}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      revealStep = 2;
+      mainRevealBtn.textContent = 'Show Points';
+    } else if (revealStep === 2) {
+      // Step 3: Reveal points for current question
+      const pointsEl = document.getElementById('p1-current-points');
+      pointsEl.classList.remove('hidden');
+      pointsEl.classList.add('revealed');
+      
+      runningTotal += answer.points;
+      document.getElementById('p1-running-value').textContent = runningTotal;
+      
+      currentRevealIndex++;
+      revealStep = 0;
+      
+      if (currentRevealIndex < gameState.player1Answers.length) {
+        mainRevealBtn.textContent = 'Next Question';
+      } else {
+        mainRevealBtn.textContent = 'Show Total';
+      }
+    }
+  };
   
-  // Show total score and continue button
-  document.getElementById('p1-total-value').textContent = gameState.player1Score;
-  document.getElementById('p1-total-container').style.display = 'block';
-  document.getElementById('p1-continue-btn').style.display = 'block';
+  // Hide total score and continue button initially
+  document.getElementById('p1-total-container').style.display = 'none';
+  document.getElementById('p1-continue-btn').style.display = 'none';
 }
 
 // This function is no longer needed - all results shown at once
@@ -294,6 +301,7 @@ function showNextPlayer1Reveal() {
 
 function continueToPlayer2() {
   document.getElementById('p1-continue-btn').style.display = 'none';
+  document.getElementById('transition-p1-score').textContent = gameState.player1Score;
   showScreen('transition-screen');
 }
 
@@ -324,7 +332,7 @@ function displayPlayer2Question() {
     button.className = 'answer-btn player2-btn';
     button.innerHTML = `
       <span class="answer-text">${answer.text}</span>
-      <span class="answer-points">${answer.points} pts</span>
+      <span class="answer-points" style="display:none;">${answer.points} pts</span>
     `;
     
     // Disable if Player 1 picked this answer
@@ -342,7 +350,7 @@ function displayPlayer2Question() {
   noMatchButton.className = 'answer-btn player2-btn no-match';
   noMatchButton.innerHTML = `
     <span class="answer-text">No Match</span>
-    <span class="answer-points">0 pts</span>
+    <span class="answer-points" style="display:none;">0 pts</span>
   `;
   // Disable if Player 1 picked "No Match"
   if (player1AnswerIndex >= question.answers.length) {
@@ -396,6 +404,41 @@ function proceedPlayer2() {
   // Kept for compatibility but not used
 }
 
+async function navigateToPerplexity() {
+  const promptText = document.getElementById('promptDisplay').textContent;
+  const copyBtn = document.getElementById('routeToPplxBtn');
+  const originalText = copyBtn.textContent;
+  const originalBg = copyBtn.style.backgroundColor;
+  
+  try {
+    // Encode the prompt for URL use
+    const encodedPrompt = encodeURIComponent(promptText);
+    
+    // Construct the Perplexity URL with the query parameter
+    const perplexityUrl = `https://www.perplexity.ai/?q=${encodedPrompt}`;
+    
+    // Open in a new tab
+    window.open(perplexityUrl, '_blank');
+    
+    // Show feedback
+    copyBtn.textContent = '✓ Opened in new tab';
+    copyBtn.style.backgroundColor = '#4CAF50';
+    
+    // Reset button after 2 seconds
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.style.backgroundColor = originalBg;
+    }, 2000);
+  } catch (err) {
+    copyBtn.textContent = 'Failed to open';
+    copyBtn.style.backgroundColor = '#f44336';
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.style.backgroundColor = originalBg;
+    }, 2000);
+  }
+}
+
 function showPlayer2Results() {
   showScreen('player2-results-screen');
   
@@ -405,29 +448,101 @@ function showPlayer2Results() {
   const resultsContainer = document.getElementById('p2-results-items');
   resultsContainer.innerHTML = '';
   
-  // Show ALL results at once
-  gameState.player2Answers.forEach((answer, index) => {
+  // Progressive reveal state with 3 steps per question
+  let currentRevealIndex = 0;
+  let revealStep = 0; // 0 = show question, 1 = show answer, 2 = show points
+  let runningTotal = 0;
+  
+  // Create running total display
+  const runningTotalDiv = document.createElement('div');
+  runningTotalDiv.id = 'p2-running-total';
+  runningTotalDiv.className = 'running-total';
+  runningTotalDiv.style.display = 'none';
+  runningTotalDiv.innerHTML = `
+    <div class="running-total-label">Running Total:</div>
+    <div class="running-total-value" id="p2-running-value">0</div>
+  `;
+  resultsContainer.appendChild(runningTotalDiv);
+  
+  // Create main reveal button
+  const mainRevealBtn = document.createElement('button');
+  mainRevealBtn.className = 'btn-primary';
+  mainRevealBtn.textContent = 'Start Reveal';
+  mainRevealBtn.style.marginTop = '20px';
+  resultsContainer.appendChild(mainRevealBtn);
+  
+  // Current question display container
+  const currentQuestionDiv = document.createElement('div');
+  currentQuestionDiv.id = 'p2-current-reveal';
+  resultsContainer.insertBefore(currentQuestionDiv, mainRevealBtn);
+  
+  mainRevealBtn.onclick = () => {
+    if (currentRevealIndex >= gameState.player2Answers.length) {
+      // All revealed - show total and continue
+      mainRevealBtn.style.display = 'none';
+      document.getElementById('p2-total-value').textContent = gameState.player2Score;
+      document.getElementById('p2-total-container').style.display = 'block';
+      document.getElementById('p2-continue-btn').style.display = 'block';
+      return;
+    }
+    
+    const answer = gameState.player2Answers[currentRevealIndex];
     const question = gameData.questions[answer.questionIndex];
     
-    const revealItem = document.createElement('div');
-    revealItem.className = 'reveal-item';
-    revealItem.style.animationDelay = `${index * 0.1}s`;
-    
-    revealItem.innerHTML = `
-      <div class="reveal-question">Q${index + 1}: ${question.question}</div>
-      <div class="reveal-answer">
-        <span class="reveal-answer-text">${answer.text}</span>
-        <span class="reveal-points">+${answer.points}</span>
-      </div>
-    `;
-    
-    resultsContainer.appendChild(revealItem);
-  });
+    if (revealStep === 0) {
+      // Step 1: Show question text only
+      currentQuestionDiv.innerHTML = `
+        <div class="reveal-item" style="animation-delay: 0s;">
+          <div class="reveal-question">Q${currentRevealIndex + 1}: ${question.question}</div>
+        </div>
+      `;
+      
+      revealStep = 1;
+      mainRevealBtn.textContent = 'Show Answer';
+      
+      // Show running total on first question
+      if (currentRevealIndex === 0) {
+        document.getElementById('p2-running-total').style.display = 'block';
+      }
+    } else if (revealStep === 1) {
+      // Step 2: Show player's answer (points still hidden)
+      currentQuestionDiv.innerHTML = `
+        <div class="reveal-item" style="animation-delay: 0s;">
+          <div class="reveal-question">Q${currentRevealIndex + 1}: ${question.question}</div>
+          <div class="reveal-answer-row">
+            <div class="reveal-answer-info">
+              <span class="reveal-answer-text">${answer.text}</span>
+              <span class="reveal-points hidden" id="p2-current-points">+${answer.points}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      revealStep = 2;
+      mainRevealBtn.textContent = 'Show Points';
+    } else if (revealStep === 2) {
+      // Step 3: Reveal points for current question
+      const pointsEl = document.getElementById('p2-current-points');
+      pointsEl.classList.remove('hidden');
+      pointsEl.classList.add('revealed');
+      
+      runningTotal += answer.points;
+      document.getElementById('p2-running-value').textContent = runningTotal;
+      
+      currentRevealIndex++;
+      revealStep = 0;
+      
+      if (currentRevealIndex < gameState.player2Answers.length) {
+        mainRevealBtn.textContent = 'Next Question';
+      } else {
+        mainRevealBtn.textContent = 'Show Total';
+      }
+    }
+  };
   
-  // Show total score and continue button
-  document.getElementById('p2-total-value').textContent = gameState.player2Score;
-  document.getElementById('p2-total-container').style.display = 'block';
-  document.getElementById('p2-continue-btn').style.display = 'block';
+  // Hide total score and continue button initially
+  document.getElementById('p2-total-container').style.display = 'none';
+  document.getElementById('p2-continue-btn').style.display = 'none';
 }
 
 // This function is no longer needed - all results shown at once
@@ -633,43 +748,6 @@ async function copyPrompt() {
     }, 2000);
   }
 }
-
-async function navigateToPerplexity() {
-  const promptText = document.getElementById('promptDisplay').textContent;
-  const copyBtn = document.getElementById('routeToPplxBtn');
-  const originalText = copyBtn.textContent;
-  const originalBg = copyBtn.style.backgroundColor;
-  
-  try {
-    // Encode the prompt for URL use
-    const encodedPrompt = encodeURIComponent(promptText);
-    
-    // Construct the Perplexity URL with the query parameter
-    const perplexityUrl = `https://www.perplexity.ai/?q=${encodedPrompt}`;
-    
-    // Open in a new tab
-    window.open(perplexityUrl, '_blank');
-    
-    // Show feedback
-    copyBtn.textContent = '✓ Opened in new tab';
-    copyBtn.style.backgroundColor = '#4CAF50';
-    
-    // Reset button after 2 seconds
-    setTimeout(() => {
-      copyBtn.textContent = originalText;
-      copyBtn.style.backgroundColor = originalBg;
-    }, 2000);
-  } catch (err) {
-    copyBtn.textContent = 'Failed to open';
-    copyBtn.style.backgroundColor = '#f44336';
-    setTimeout(() => {
-      copyBtn.textContent = originalText;
-      copyBtn.style.backgroundColor = originalBg;
-    }, 2000);
-  }
-}
-
-
 
 function clearJSON() {
   document.getElementById('custom-json-input').value = '';
